@@ -1,2 +1,2 @@
-# CrazyQuiz.Android
-A new rebuilt version of CrazyQuiz aimed to specifically the Android platform
+# CrazyQuiz.Backend
+The backend controller for CrazyQuiz
