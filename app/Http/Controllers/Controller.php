@@ -9,5 +9,12 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    /**
+     * @param $data
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function api($data)
+    {
+        return response()->json([ 'data' => $data, 'size' => count($data) ]);
+    }
 }
