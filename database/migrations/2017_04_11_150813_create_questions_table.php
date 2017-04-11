@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->string('text');
             $table->integer('level')->default(1);
+            $table->string('hint')->nullable();
             $table->timestamps();
         });
     }
