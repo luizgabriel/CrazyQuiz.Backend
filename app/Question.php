@@ -3,6 +3,7 @@
 namespace CrazyQuiz;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Question extends Model
 {
@@ -16,7 +17,7 @@ class Question extends Model
         'level' => 'integer',
     ];
 
-    public function options()
+    public function options(): HasMany
     {
         return $this->hasMany(QuestionOption::class, 'question_id');
     }
