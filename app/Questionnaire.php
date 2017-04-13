@@ -10,7 +10,7 @@ class Questionnaire implements IQuestionnaire
         $question = Question::with('options')
             ->where('level', $level)
             ->whereNotIn('id', $answeredQuestions)
-            ->random(1)
+            ->inRandomOrder()
             ->first();
 
         if (!$question && $this->hasExtraLevel($level)) {
