@@ -21,10 +21,9 @@ class CreateQuestionOptionsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::table('questions', function (Blueprint $table) {
             $table->integer('right_option_id')->nullable()->unsigned()->index();
-            $table->foreign('right_option_id')->references('id')->on('options');
-            $table->timestamps();
+            $table->foreign('right_option_id')->references('id')->on('question_options');
         });
     }
 
