@@ -1,5 +1,6 @@
 <?php
 
+use CrazyQuiz\Question;
 use Illuminate\Database\Seeder;
 
 class QuestionsSeeder extends Seeder
@@ -11,6 +12,6 @@ class QuestionsSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Question::class)->times(300)->create();
     }
 }
