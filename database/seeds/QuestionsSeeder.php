@@ -1,6 +1,7 @@
 <?php
 
 use CrazyQuiz\Question;
+use CrazyQuiz\QuestionOption;
 use Illuminate\Database\Seeder;
 
 class QuestionsSeeder extends Seeder
@@ -12,6 +13,14 @@ class QuestionsSeeder extends Seeder
      */
     public function run()
     {
-        factory(Question::class)->times(300)->create();
+        foreach (range(0,300) as $i) {
+            $q = factory(Question::class)->create();
+            $opts = factory(QuestionOption::class)
+                ->times(4)
+                ->create([ 'question_id' => $q->id ]);
+
+            $opts->random(1)->first()->update(['answer' => true]);
+        }
+
     }
 }

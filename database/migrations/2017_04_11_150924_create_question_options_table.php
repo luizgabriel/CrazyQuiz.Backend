@@ -16,14 +16,10 @@ class CreateQuestionOptionsTable extends Migration
         Schema::create('question_options', function (Blueprint $table) {
             $table->increments('id');
             $table->text('text');
+            $table->boolean('answer')->default(false);
             $table->integer('question_id')->unsigned()->index();
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->timestamps();
-        });
-
-        Schema::table('questions', function (Blueprint $table) {
-            $table->integer('right_option_id')->nullable()->unsigned()->index();
-            $table->foreign('right_option_id')->references('id')->on('question_options');
         });
     }
 

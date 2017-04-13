@@ -28,14 +28,6 @@ $factory->define(CrazyQuiz\Question::class, function (Faker\Generator $faker) {
         'text' => $faker->text(100) . '?',
         'level' => $faker->randomElement([1, 2, 3 ,4 , 5]),
         'hint' => $faker->words(3, true),
-        'options' => function ($question) {
-            return factory(\CrazyQuiz\QuestionOption::class, 4)->create([
-                'question_id' => $question['id']
-            ]);
-        },
-        'right_option_id' => function ($question) {
-            return $question['options']->first()->id;
-        }
     ];
 });
 

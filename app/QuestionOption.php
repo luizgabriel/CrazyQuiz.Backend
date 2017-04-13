@@ -8,7 +8,13 @@ class QuestionOption extends Model
 {
     protected $fillable = [
         'text',
+        'answer',
         'question_id'
+    ];
+
+    protected $casts = [
+        'answer' => 'bool',
+        'question_id' => 'integer'
     ];
 
     public function question()
