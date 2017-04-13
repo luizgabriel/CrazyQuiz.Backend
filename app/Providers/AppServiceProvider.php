@@ -2,6 +2,8 @@
 
 namespace CrazyQuiz\Providers;
 
+use CrazyQuiz\IQuestionnaire;
+use CrazyQuiz\Questionnaire;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(IQuestionnaire::class, Questionnaire::class);
     }
 }

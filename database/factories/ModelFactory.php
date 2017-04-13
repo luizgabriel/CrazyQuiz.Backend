@@ -22,3 +22,29 @@ $factory->define(CrazyQuiz\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(CrazyQuiz\Question::class, function (Faker\Generator $faker) {
+    return [
+        'text' => $faker->text(100) . '?',
+        'level' => $faker->randomElement([1, 2, 3 ,4 , 5]),
+        'hint' => $faker->words(3, true),
+        'options' => function ($question) {
+            return factory(\CrazyQuiz\QuestionOption::class, 4)->create([
+                'question_id' => $question['id']
+            ]);
+        },
+        'right_option_id' => function ($question) {
+            return $question['options']->first()->id;
+        }
+    ];
+});
+
+
+$factory->define(CrazyQuiz\QuestionOption::class, function (Faker\Generator $faker) {
+    return [
+        'text' => $faker->text(30),
+        'question_id' => function () {
+            return factory(\CrazyQuiz\Question::class)->create()->id;
+        }
+    ];
+});
