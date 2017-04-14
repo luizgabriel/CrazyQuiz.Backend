@@ -13,8 +13,7 @@ class QuestionsSeeder extends Seeder
      */
     public function run()
     {
-        $t = app()->environment('testing')? 20 : 300;
-        foreach (range(0, $t) as $i) {
+        foreach (range(0, 100) as $i) {
             $q = factory(Question::class)->create();
             $opts = factory(QuestionOption::class)
                 ->times(4)
