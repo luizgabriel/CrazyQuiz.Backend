@@ -4,13 +4,9 @@ namespace Tests\Unit;
 
 use CrazyQuiz\IQuestionnaire;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class QuestionnaireTest extends TestCase
 {
-    use DatabaseMigrations;
-
     /**
      * @var IQuestionnaire
      */
@@ -20,8 +16,6 @@ class QuestionnaireTest extends TestCase
     {
         parent::setUp();
         $this->questionnaire = app()->make(IQuestionnaire::class);
-
-        $this->seed('QuestionsSeeder');
     }
 
 

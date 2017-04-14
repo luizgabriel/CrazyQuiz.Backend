@@ -4,13 +4,9 @@ namespace Tests\Feature;
 
 use CrazyQuiz\Question;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class QuestionsApi extends TestCase
 {
-    use DatabaseMigrations;
 
     /**
      * A basic test example.
@@ -42,6 +38,15 @@ class QuestionsApi extends TestCase
         $this->get('/api/questions/random?level=4')
             ->assertJsonFragment([
                'level' => 4,
+            ]);
+    }
+
+    public function testFinishedLevel()
+    {
+        $qs = Question::where('level', 1)->get()->pluck('id')->implode(',');
+        $this->get("/api/questions/random?answered={$qs}")
+            ->assertJsonFragment([
+                'level' => 2,
             ]);
     }
 
