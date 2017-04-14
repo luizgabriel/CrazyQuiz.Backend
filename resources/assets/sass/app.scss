@@ -1,9 +1,18 @@
-
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
-// Variables
-@import "variables";
-
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/font-awesome/scss/font-awesome";
+
+@import "global/components-rounded";
+@import "global/plugins-md";
+
+@-webkit-keyframes autofill {
+  to {
+    color: #fff;
+    background: #6ba3c8;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+}

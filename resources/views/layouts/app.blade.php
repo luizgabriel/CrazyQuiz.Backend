@@ -10,78 +10,119 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @include('layouts.styles')
 
-    <!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
+    @section('styles')
+        <link rel="stylesheet" href="{{ asset('css/layout.css') }}"/>
+    @show
+
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+    <!-- BEGIN HEADER -->
+    <div class="page-header">
+        <!-- BEGIN HEADER TOP -->
+        <div class="page-header-top">
             <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <a href="{{ url('/') }}">
+                        <img src="{{ asset('img/logo.png') }}" height="70px" alt="logo">
                     </a>
                 </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler"></a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                        <li>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                Sair
+                            </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
                     </ul>
                 </div>
+                <!-- END TOP NAVIGATION MENU -->
             </div>
-        </nav>
+        </div>
+        <!-- END HEADER TOP -->
+        <!-- BEGIN HEADER MENU -->
+        <div class="page-header-menu">
+            <div class="container">
 
-        @yield('content')
+                <!-- BEGIN MEGA MENU -->
+                <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
+                <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
+                <div class="hor-menu ">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="{{ url('home') }}">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('questions.index') }}">Perguntas</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END MEGA MENU -->
+            </div>
+        </div>
+        <!-- END HEADER MENU -->
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <div class="page-container">
+        <div class="page-head">
+            <div class="container">
+
+                @yield('title')
+
+            </div>
+        </div>
+        <!-- END PAGE HEAD -->
+
+        <div class="page-content">
+            <div class="container">
+
+                @yield('content')
+
+            </div>
+        </div>
+    </div>
+
+    <!-- END PAGE CONTAINER -->
+    <!-- BEGIN PRE-FOOTER -->
+    <div class="page-prefooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+                    <h2>Contato</h2>
+                    <address class="margin-bottom-40">
+                        Whatsapp: 85 9 99933961<br>
+                        Email: <a href="mailto:luizgabriel.info@gmail.com">luizgabriel.info@gmail.com</a>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PRE-FOOTER -->
+    <!-- BEGIN FOOTER -->
+    <div class="page-footer">
+        <div class="container">
+            {{ date('Y') }} &copy; CrazyQuiz
+        </div>
+    </div>
+
+    <div class="scroll-to-top">
+        <i class="icon-arrow-up"></i>
+    </div>
+
+    @include('layouts.scripts')
 </body>
 </html>

@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
+    use ValidatesRequests;
+
     /**
      * @param $data
      * @return \Illuminate\Http\JsonResponse

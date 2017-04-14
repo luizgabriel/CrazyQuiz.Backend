@@ -14,8 +14,11 @@
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^3.2.3",
     "jquery": "^3.1.1",
-    "laravel-mix": "0.*",
-    "lodash": "^4.17.4",
-    "vue": "^2.1.10"
+    "laravel-mix": "0.*"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "icheck": "^1.0.2",
+    "jquery.uniform": "^4.2.0"
   }
 }
