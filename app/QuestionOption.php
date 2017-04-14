@@ -5,6 +5,12 @@ namespace CrazyQuiz;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * CrazyQuiz\QuestionOption
+ *
+ * @property-read \CrazyQuiz\Question $question
+ * @mixin \Eloquent
+ */
 class QuestionOption extends Model
 {
     protected $fillable = [
