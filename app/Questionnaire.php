@@ -13,11 +13,10 @@ class Questionnaire implements IQuestionnaire
             ->inRandomOrder()
             ->first();
 
-        if (!$question && $this->hasExtraLevel($level)) {
+        if (!$question && $this->hasExtraLevel($level))
             return $this->getRandomQuestion($level + 1, $answeredQuestions);
-        } else {
+        else
             return $question;
-        }
     }
 
     public function hasExtraLevel($currentLevel): bool
