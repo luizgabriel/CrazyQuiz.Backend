@@ -7,13 +7,10 @@
 
         <title>Crazy Quiz</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-color: #ebebeb;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
