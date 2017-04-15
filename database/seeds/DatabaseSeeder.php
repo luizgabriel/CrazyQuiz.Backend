@@ -11,12 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \CrazyQuiz\User::create([
-            'name' => 'Administrador',
-            'email' => 'admin@crazyquiz.com.br',
-            'password' => bcrypt('crazyquiz2017'),
-        ]);
-
+        $this->call(UsersSeeder::class);
         $this->call(QuestionsSeeder::class);
     }
 }
