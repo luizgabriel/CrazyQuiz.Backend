@@ -73,7 +73,7 @@ class QuestionsController extends Controller
     public function update(Request $request, Question $question)
     {
         /** @var Question $question */
-        $question = $question->update($request->only('text', 'level', 'hint'));
+        $question->update($request->only('text', 'level', 'hint'));
         $options = $request->get('options');
 
         foreach ($options as $id => $option) {
