@@ -15,7 +15,7 @@ $brand-main-red-color:                                             		#f36a5a;
 
 // Body and header
 $bg-color:                                                         		#fff;
-$header-bg-color: #93c0ee;
+$header-bg-color:                                                       #5c97bd;
 $header-menu-bg-color:                                             		#444d58;    
 
 // Mega Menu 
@@ -42,16 +42,16 @@ $header-hor-menu-box-shadow:											5px 5px rgba($header-hor-menu-dropdown-me
 $header-hor-menu-dropdown-menu-link-bg-color-on-active:           		lighten($header-hor-menu-default-link-bg-color-on-hover, 4%); 
 $header-hor-menu-dropdown-menu-link-bg-color-on-hover:           		lighten($header-hor-menu-default-link-bg-color-on-hover, 4%); 
 
-$header-hor-menu-dropdown-menu-link-font-color:                 		#ced5de;
-$header-hor-menu-dropdown-menu-link-font-color-on-hover:        		#ced5de;  
-$header-hor-menu-dropdown-menu-link-font-color-on-active:        		#ced5de;  
+$header-hor-menu-dropdown-menu-link-font-color:                 		$header-bg-color;
+$header-hor-menu-dropdown-menu-link-font-color-on-hover:        		$header-bg-color;
+$header-hor-menu-dropdown-menu-link-font-color-on-active:        		$header-bg-color;
 
-$header-hor-menu-dropdown-menu-link-icon-color:                 		#6fa7d7;
-$header-hor-menu-dropdown-menu-link-icon-color-on-hover:        		#6fa7d7;    
-$header-hor-menu-dropdown-menu-link-icon-color-on-active:        		#6fa7d7;     
+$header-hor-menu-dropdown-menu-link-icon-color:                 		#fff;
+$header-hor-menu-dropdown-menu-link-icon-color-on-hover:        		#fff;
+$header-hor-menu-dropdown-menu-link-icon-color-on-active:        		#fff;
 
 // Default Mega Menu
-$header-hor-menu-mega-menu-header-font-color:                   		#ced5de; 
+$header-hor-menu-mega-menu-header-font-color:                   		#fff;
 
 // Light Mega Menu
 $header-light-hor-menu-default-link-font-color:                       	$header-hor-menu-default-link-font-color; 

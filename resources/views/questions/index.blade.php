@@ -40,20 +40,29 @@
                         </div>
                     </div>
 
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-hover table-light">
                         <thead>
-                            <tr class="heading">
+                            <tr class="uppercase">
                                 <th>#</th>
                                 <th>Nível</th>
                                 <th>Texto</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach($questions as $question)
-                            <tr>
+                            <tr data-id="{{  $question->id }}" data-text="{{ $question->text }}">
                                 <td>{{ $question->id }}</td>
                                 <td>{{ $question->level }}</td>
                                 <td>{{ str_limit($question->text) }}</td>
+                                <td>
+                                    <a href="{{ route('questions.edit', $question->id) }}" class="btn default btn-xs text-warning">
+                                        <i class="fa fa-edit"></i> Editar
+                                    </a>
+                                    <button data-component="destroyBtn" class="btn default btn-xs text-danger">
+                                        <i class="fa fa-close"></i> Remover
+                                    </button>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

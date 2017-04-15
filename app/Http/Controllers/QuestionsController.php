@@ -53,17 +53,6 @@ class QuestionsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \CrazyQuiz\Question  $question
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Question $question)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \CrazyQuiz\Question  $question
@@ -71,7 +60,7 @@ class QuestionsController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return view('questions.edit', compact('question'));
     }
 
     /**
@@ -83,7 +72,18 @@ class QuestionsController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        /** @var Question $question */
+        $question = $question->update($request->only('text', 'level'));
+        $options = $request->get('options');
+
+        foreach ($options as $id => $option) {
+            $option['answer'] = $request->get('answer') == $id? true: false;
+            $question->options()->where('id', $id)->update($option);
+        }
+
+        $request->session()->flash('questions.updated', true);
+
+        return redirect()->route('questions.index');
     }
 
     /**
@@ -94,6 +94,6 @@ class QuestionsController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+
     }
 }
