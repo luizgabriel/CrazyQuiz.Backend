@@ -3,6 +3,7 @@
 namespace CrazyQuiz\Http\Controllers;
 
 use CrazyQuiz\Question;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class QuestionsController extends Controller
@@ -14,7 +15,7 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions = Question::paginate(15);
+        $questions = Question::orderBy('updated_at', 'desc')->paginate(15);
         return view('questions.index', compact('questions'));
     }
 
@@ -25,7 +26,7 @@ class QuestionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('questions.create');
     }
 
     /**
@@ -36,7 +37,19 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /** @var Question $question */
+        $question = Question::create($request->only('text', 'level'));
+        $options = $request->get('options');
+
+        for ($i = 0; $i < count($options); $i++) {
+            $data = $options[$i];
+            $data['answer'] = $request->get('answer') == $i? true: false;
+            $question->options()->create($options[$i]);
+        }
+
+        $request->session()->flash('questions.created', true);
+
+        return redirect()->route('questions.index');
     }
 
     /**

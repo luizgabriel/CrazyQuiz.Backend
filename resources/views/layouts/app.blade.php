@@ -20,21 +20,16 @@
 <body>
     <!-- BEGIN HEADER -->
     <div class="page-header">
-        <!-- BEGIN HEADER TOP -->
+
         <div class="page-header-top">
             <div class="container">
-                <!-- BEGIN LOGO -->
+
                 <div class="page-logo">
                     <a href="{{ url('/') }}">
                         <img src="{{ asset('img/logo.png') }}" height="70px" alt="logo">
                     </a>
                 </div>
-                <!-- END LOGO -->
-                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-                <a href="javascript:;" class="menu-toggler"></a>
-                <!-- END RESPONSIVE MENU TOGGLER -->
 
-                <!-- BEGIN TOP NAVIGATION MENU -->
                 <div class="top-menu">
                     <ul class="nav navbar-nav pull-right">
 
@@ -50,31 +45,10 @@
 
                     </ul>
                 </div>
-                <!-- END TOP NAVIGATION MENU -->
-            </div>
-        </div>
-        <!-- END HEADER TOP -->
-        <!-- BEGIN HEADER MENU -->
-        <div class="page-header-menu">
-            <div class="container">
 
-                <!-- BEGIN MEGA MENU -->
-                <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
-                <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
-                <div class="hor-menu ">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="{{ url('home') }}">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('questions.index') }}">Perguntas</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- END MEGA MENU -->
             </div>
         </div>
-        <!-- END HEADER MENU -->
+
     </div>
 
     <div class="page-container">

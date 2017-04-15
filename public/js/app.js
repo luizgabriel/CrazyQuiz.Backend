@@ -930,6 +930,7 @@ process.umask = function() { return 0; };
 
 __webpack_require__(30);
 
+$('[data-toggle="tooltip"]').tooltip();
 $('input').iCheck({ checkboxClass: "icheckbox_flat", radioClass: "iradio_flat" });
 
 /***/ }),

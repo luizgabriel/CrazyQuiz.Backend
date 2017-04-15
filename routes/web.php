@@ -2,10 +2,14 @@
 
 Route::get('/', 'Auth\LoginController@showLoginForm');
 
-Auth::routes();
+
+Route::group(['middleware' => 'guest'], function() {
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login', 'Auth\LoginController@login');
+});
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/home', 'HomeController@index');
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
     Route::resource('/questions', 'QuestionsController');
 });
 

@@ -36,14 +36,6 @@
                     <input type="checkbox" name="remember" value="1">Lembrar de mim
                 </label>
             </div>
-            <div class="pull-right forget-password-block">
-                <a href="{{ route('password.request') }}" id="forget-password" class="forget-password">Esqueceu sua senha?</a>
-            </div>
-        </div>
-        <div class="create-account">
-            <p>
-                <a href="{{ route('register') }}" id="register-btn">Crie uma conta</a>
-            </p>
         </div>
     </form>
 @endsection
