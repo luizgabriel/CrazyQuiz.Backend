@@ -16,7 +16,7 @@ class SecureMiddleware
     public function handle($request, Closure $next)
     {
         if (app()->environment('production')) {
-            \URL::forceSchema('https');
+            \URL::forceScheme('https');
             if($request->header('x-forwarded-proto') <> 'https' && !$request->is('rest/*')) {
                 return redirect()->secure($request->getRequestUri());
             }
