@@ -38,7 +38,7 @@ class QuestionsController extends Controller
     public function store(Request $request)
     {
         /** @var Question $question */
-        $question = Question::create($request->only('text', 'level'));
+        $question = Question::create($request->only('text', 'level', 'hint'));
         $options = $request->get('options');
 
         for ($i = 0; $i < count($options); $i++) {
@@ -94,6 +94,8 @@ class QuestionsController extends Controller
      */
     public function destroy(Question $question)
     {
+        $question->delete();
 
+        return redirect()->route('questions.index');
     }
 }
