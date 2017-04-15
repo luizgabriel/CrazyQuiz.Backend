@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="hint">Dica</label>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <input type="text" class="form-control" name="hint" id="hint" value="{{ old('hint') }}"/>
                         </div>
                     </div>
