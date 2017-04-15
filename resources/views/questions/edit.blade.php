@@ -28,7 +28,7 @@
         </div>
         <div class="portlet-body form">
 
-            <form action="{{ route('questions.update') }}" method="post" class="form-horizontal">
+            <form action="{{ route('questions.update', $question->id) }}" method="post" class="form-horizontal">
                 {{ csrf_field() }}
 
                 <div class="form-body">
