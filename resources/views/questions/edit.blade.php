@@ -30,6 +30,7 @@
 
             <form action="{{ route('questions.update', $question->id) }}" method="post" class="form-horizontal">
                 {{ csrf_field() }}
+                <input type="hidden" name="_method" value="put">
 
                 <div class="form-body">
                     <div class="form-group">
