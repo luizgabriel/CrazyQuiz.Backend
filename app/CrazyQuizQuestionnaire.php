@@ -3,14 +3,16 @@
 namespace CrazyQuiz;
 
 
-class Questionnaire implements IQuestionnaire
+use Illuminate\Support\Collection;
+
+class CrazyQuizQuestionnaire implements IQuestionnaire
 {
     /**
      * @param int $level
      * @param array $answeredQuestions
      * @return Question|null
      */
-    public function getRandomQuestion($level = 1, array $answeredQuestions = [])
+    public function getRandomQuestion($level = 1, array $answeredQuestions = []): ?Question
     {
         $question = Question::with('options')
             ->where('level', $level)
@@ -27,5 +29,14 @@ class Questionnaire implements IQuestionnaire
     public function hasExtraLevel($currentLevel): bool
     {
         return Question::where('level', $currentLevel + 1)->count() > 0;
+    }
+
+    /**
+     * @param int $level
+     * @return Collection
+     */
+    public function getQuestionsForLevel($level): Collection
+    {
+        return Question::where('level', $level)->get();
     }
 }

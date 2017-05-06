@@ -2,7 +2,20 @@
 
 namespace CrazyQuiz;
 
+use Illuminate\Support\Collection;
+
 interface IQuestionnaire
 {
-    function getRandomQuestion($level = 1, array $answeredQuestions = []);
+    /**
+     * @param int $level
+     * @param array $answeredQuestions
+     * @return Question|null
+     */
+    function getRandomQuestion($level = 1, array $answeredQuestions = []): ?Question;
+
+    /**
+     * @param int $level
+     * @return Collection
+     */
+    function getQuestionsForLevel($level): Collection;
 }

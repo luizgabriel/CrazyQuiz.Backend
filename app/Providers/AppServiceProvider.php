@@ -3,7 +3,7 @@
 namespace CrazyQuiz\Providers;
 
 use CrazyQuiz\IQuestionnaire;
-use CrazyQuiz\Questionnaire;
+use CrazyQuiz\CrazyQuizQuestionnaire;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
 
-        $this->app->bind(IQuestionnaire::class, Questionnaire::class);
+        $this->app->bind(IQuestionnaire::class, CrazyQuizQuestionnaire::class);
     }
 }

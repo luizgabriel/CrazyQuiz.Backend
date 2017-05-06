@@ -8,7 +8,6 @@
 
 @section('content')
 
-
     <ul class="page-breadcrumb breadcrumb">
         <li>
             <a href="{{ route('questions.index') }}">Gerenciar perguntas</a>
