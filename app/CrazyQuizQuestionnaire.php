@@ -37,6 +37,8 @@ class CrazyQuizQuestionnaire implements IQuestionnaire
      */
     public function getQuestionsForLevel($level): Collection
     {
-        return Question::where('level', $level)->get();
+        return Question::with('options')
+            ->where('level', $level)
+            ->get();
     }
 }
