@@ -5,6 +5,8 @@
 /vendor
 /.idea
 /.vagrant
+composer.phar
 Homestead.json
 Homestead.yaml
 .env
+npm-debug.log

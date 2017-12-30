@@ -25,16 +25,15 @@ $factory->define(CrazyQuiz\User::class, function (Faker\Generator $faker) {
 
 $factory->define(CrazyQuiz\Question::class, function (Faker\Generator $faker) {
     return [
-        'text' => $faker->text(100) . '?',
-        'level' => $faker->randomElement([1, 2, 3 ,4 , 5]),
-        'hint' => $faker->words(3, true),
+        'text' => str_replace('.', '?', $faker->sentence(8)),
+        'difficulty' => $faker->randomNumber(2),
     ];
 });
 
 
 $factory->define(CrazyQuiz\QuestionOption::class, function (Faker\Generator $faker) {
     return [
-        'text' => $faker->text(30),
+        'text' => $faker->sentence(4),
         'question_id' => function () {
             return factory(\CrazyQuiz\Question::class)->create()->id;
         }

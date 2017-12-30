@@ -1,39 +1,24 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.base', ['body' => 'bg-dark'])
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('body')
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
 
-    <title>Crazy Quiz</title>
+            <div class="row">
+                <div class="col-md-6 mx-auto text-center">
+                    <a href="{{ url('/') }}">
+                        <img src="{{ asset('img/logo.png') }}" width="300px" alt=""/>
+                    </a>
+                </div>
+            </div>
 
-    @include('layouts.styles')
-
-    @section('styles')
-        <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-    @show
-
-</head>
-
-<body class="page-md login">
-
-    <div class="logo">
-        <a href="{{ url('/') }}">
-            <img src="{{ asset('img/logo.png') }}" width="300px" alt=""/>
-        </a>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="content">
-        @yield('content')
-    </div>
-
-    <div class="copyright">
-        {{ date('Y') }} © CrazyQuiz.
-    </div>
-
-    @include('layouts.scripts')
-</body>
-</html>
+</div>
+@endsection

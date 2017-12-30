@@ -3,42 +3,35 @@
 namespace CrazyQuiz;
 
 
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
-class CrazyQuizQuestionnaire implements IQuestionnaire
+class CrazyQuizQuestionnaire
 {
     /**
-     * @param int $level
      * @param array $answeredQuestions
      * @return Question|null
      */
-    public function getRandomQuestion($level = 1, array $answeredQuestions = []): ?Question
+    public function getRandomQuestion(array $answeredQuestions = [])
     {
         $question = Question::with('options')
-            ->where('level', $level)
             ->whereNotIn('id', $answeredQuestions)
             ->inRandomOrder()
             ->first();
 
-        if (!$question && $this->hasExtraLevel($level))
-            return $this->getRandomQuestion($level + 1, $answeredQuestions);
-        else
-            return $question;
+        return $question;
     }
 
-    public function hasExtraLevel($currentLevel): bool
+    function getQuestions(Carbon $lastRefresh = null): Collection
     {
-        return Question::where('level', $currentLevel + 1)->count() > 0;
+        $query = Question::with('options');
+
+        if (!empty($lastRefresh))
+            $query = $query->where('updated_at', '>', $lastRefresh);
+
+
+        return $query->orderBy('difficulty', 'asc')->get();
     }
 
-    /**
-     * @param int $level
-     * @return Collection
-     */
-    public function getQuestionsForLevel($level): Collection
-    {
-        return Question::with('options')
-            ->where('level', $level)
-            ->get();
-    }
+
 }

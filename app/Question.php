@@ -9,18 +9,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * CrazyQuiz\Question
  *
  * @property-read \Illuminate\Database\Eloquent\Collection|\CrazyQuiz\QuestionOption[] $options
+ * @property int id
+ * @property string text
+ * @property mixed difficulty
  * @mixin \Eloquent
  */
 class Question extends Model
 {
     protected $fillable = [
         'text',
-        'level',
-        'hint',
+        'difficulty',
     ];
 
     protected $casts = [
-        'level' => 'integer',
+        'difficulty' => 'integer',
     ];
 
     public function options(): HasMany

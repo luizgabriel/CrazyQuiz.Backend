@@ -13,15 +13,13 @@ class QuestionsSeeder extends Seeder
      */
     public function run()
     {
-        foreach (range(1, 5) as $level) {
-            foreach (range(0, 25) as $i) {
-                $q = factory(Question::class)->create(['level' => $level]);
-                $opts = factory(QuestionOption::class)
-                    ->times(4)
-                    ->create([ 'question_id' => $q->id ]);
+        foreach (range(0, 100) as $i) {
+            $q = factory(Question::class)->create();
+            $opts = factory(QuestionOption::class)
+                ->times(4)
+                ->create([ 'question_id' => $q->id ]);
 
-                $opts->random(1)->first()->update(['answer' => true]);
-            }
+            $opts->random(1)->first()->update(['answer' => true]);
         }
 
     }

@@ -6,20 +6,20 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "5.4.*",
-        "laravel/tinker": "~1.0",
-        "fzaninotto/faker": "~1.4",
-        "laravelcollective/html": "^5.3.0"
+        "fideloper/proxy": "~3.3",
+        "laravel/framework": "5.5.*",
+        "laravel/tinker": "~1.0"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^2.3",
-        "doctrine/dbal": "~2.3",
+        "filp/whoops": "~2.0",
+        "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7"
+        "phpunit/phpunit": "~6.0"
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database/seeds",
+            "database/factories"
         ],
         "psr-4": {
             "CrazyQuiz\\": "app/"
@@ -30,6 +30,14 @@
             "Tests\\": "tests/"
         }
     },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "toin0u/geocoder-laravel",
+                "tom-lingham/searchy"
+            ]
+        }
+    },
     "scripts": {
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -37,15 +45,9 @@
         "post-create-project-cmd": [
             "php artisan key:generate"
         ],
-        "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
-        ],
-        "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan ide-helper:generate",
-            "php artisan ide-helper:meta",
-            "php artisan optimize"
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "php artisan package:discover"
         ]
     },
     "config": {

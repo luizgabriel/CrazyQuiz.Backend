@@ -1,41 +1,38 @@
 @extends('layouts.login')
 
 @section('content')
-    <form class="login-form" action="{{ route('login') }}" method="post" novalidate="novalidate">
-        {{ csrf_field() }}
+    <!-- form card login -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">Login</h3>
+        </div>
+        <div class="card-body">
+            <form class="login-form" action="{{ route('login') }}" method="post" novalidate="novalidate">
+                {{ csrf_field() }}
 
-        <div class="form-title">
-            <span class="form-title">Bem-vindo.</span>
-            <span class="form-subtitle">Preencha suas credenciais.</span>
-        </div>
+                @foreach($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        <button class="close" data-dismiss="alert" aria-label="close"></button>
+                        <span>
+                            {{ $error }}
+                        </span>
+                    </div>
+                @endforeach
 
-        @foreach($errors as $error)
-        <div class="alert alert-danger display-hide">
-            <button class="close" data-close="alert"></button>
-            <span>
-                {{ $error }}
-            </span>
+                <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email" id="email" value="{{ old('email') }}" required="">
+                </div>
+                <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
+                    <label for="password">Senha</label>
+                    <input type="password" class="form-control" name="password" id="password" required="" autocomplete="new-password">
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="remember" class="custom-control-input" id="rememberCheck">
+                    <label class="custom-control-label" for="rememberCheck">Lembrar de mim</label>
+                </div>
+                <button type="submit" class="btn btn-success float-right">Login</button>
+            </form>
         </div>
-        @endforeach
-
-        <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-            <label class="control-label visible-ie8 visible-ie9">Username</label>
-            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="E-mail" name="email" value="{{ old('email') }}" required autofocus>
-        </div>
-        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
-            <label class="control-label visible-ie8 visible-ie9">Password</label>
-            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Senha" name="password">
-        </div>
-        <div class="form-actions">
-            <button type="submit" class="btn btn-primary btn-block uppercase">Login</button>
-        </div>
-        <div class="form-actions">
-            <div class="pull-left">
-                <label class="rememberme check">
-                    <input type="checkbox" name="remember" value="1">Lembrar de mim
-                </label>
-            </div>
-        </div>
-    </form>
+    </div>
 @endsection
