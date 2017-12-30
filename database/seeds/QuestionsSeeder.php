@@ -19,7 +19,7 @@ class QuestionsSeeder extends Seeder
                 ->times(4)
                 ->create([ 'question_id' => $q->id ]);
 
-            $opts->random(1)->first()->update(['answer' => true]);
+            $opts->last()->update(['answer' => true]);
         }
 
     }
