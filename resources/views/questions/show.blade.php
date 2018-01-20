@@ -16,7 +16,7 @@
     <h4 class="mb-3">{{ $question->text }}</h4>
 
     <ul class="list-group">
-        @foreach($question->options as $option)
+        @foreach($question->options->sortBy('id') as $option)
             <li class="list-group-item {{ $option->answer? "list-group-item-success" : "" }}">{{ $option->text }}</li>
         @endforeach
     </ul>
