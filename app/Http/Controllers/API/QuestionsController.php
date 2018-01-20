@@ -49,9 +49,9 @@ class QuestionsController extends Controller
 
         $questions = $questionnaire->getQuestions($lastRefresh)->map(function (Question $question) {
             $data = array_only($question->toArray(), ['id', 'text']);
-            $data['options'] = $question->options->sortBy('id')->map(function (QuestionOption $option) {
+            $data['options'] = $question->options->map(function (QuestionOption $option) {
                return array_only($option->toArray(), ['id', 'text', 'answer']);
-            });
+            })->sortBy('id')->values();
 
             return $data;
         });
