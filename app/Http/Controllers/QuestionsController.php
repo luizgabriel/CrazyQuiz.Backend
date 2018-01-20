@@ -33,7 +33,7 @@ class QuestionsController extends Controller
         for ($i = 0; $i < count($options); $i++) {
             $data = $options[$i];
             $data['answer'] = $answer == $i;
-            $question->options()->create($options[$i]);
+            $question->options()->create($data);
         }
 
         $request->session()->flash('questions.created', true);
