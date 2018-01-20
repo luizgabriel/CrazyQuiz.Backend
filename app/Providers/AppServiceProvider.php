@@ -2,8 +2,6 @@
 
 namespace CrazyQuiz\Providers;
 
-use CrazyQuiz\IQuestionnaire;
-use CrazyQuiz\CrazyQuizQuestionnaire;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

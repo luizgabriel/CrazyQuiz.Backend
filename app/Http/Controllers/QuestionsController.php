@@ -28,7 +28,7 @@ class QuestionsController extends Controller
         /** @var Question $question */
         $question = Question::create($request->only('text'));
         $options = $request->get('options');
-        $answer = $request->get('answer');
+        $answer = (int) $request->get('answer');
 
         for ($i = 0; $i < count($options); $i++) {
             $data = $options[$i];
