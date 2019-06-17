@@ -13,12 +13,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string text
  * @property mixed difficulty
  * @mixin \Eloquent
+ * @method static Question create(array $all)
  */
 class Question extends Model
 {
     protected $fillable = [
         'text',
-        'difficulty',
     ];
 
     protected $casts = [
@@ -28,6 +28,14 @@ class Question extends Model
     public function options(): HasMany
     {
         return $this->hasMany(QuestionOption::class, 'question_id');
+    }
+
+    /**
+     * @return Model|HasMany|object|null
+     */
+    public function getAnswerAttribute()
+    {
+        return $this->options()->where('answer', true)->first();
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace CrazyQuiz\Http\Controllers;
 
+use CrazyQuiz\Http\Requests\QuestionRequest;
 use CrazyQuiz\Question;
 use Illuminate\Http\Request;
 
@@ -13,32 +14,35 @@ class QuestionsController extends Controller
         return view('questions.index', compact('questions'));
     }
 
-    public function show(Question $question)
-    {
-        return view('questions.show', compact('question'));
-    }
-
     public function create()
     {
         return view('questions.create');
     }
 
-    public function store(Request $request)
+    public function edit(Question $question)
     {
-        /** @var Question $question */
-        $question = Question::create($request->only('text'));
-        $options = $request->get('options');
-        $answer = (int) $request->get('answer');
+        return view('questions.edit', compact('question'));
+    }
 
-        for ($i = 0; $i < count($options); $i++) {
-            $data = $options[$i];
-            $data['answer'] = $answer == $i;
-            $question->options()->create($data);
-        }
+    public function store(QuestionRequest $request)
+    {
+        $question = Question::create($request->all());
+        $question->options()->createMany($request->get('options'));
 
-        $request->session()->flash('questions.created', true);
+        return redirect()
+            ->route('questions.index')
+            ->with(['questions.created' => true]);
+    }
 
-        return redirect()->route('questions.index');
+    public function update(QuestionRequest $request, Question $question)
+    {
+        $question->update($request->all());
+        $question->options()->delete();
+        $question->options()->createMany($request->get('options'));
+
+        return redirect()
+            ->route('questions.index')
+            ->with(['questions.updated' => true]);
     }
 
     public function destroy(Question $question)

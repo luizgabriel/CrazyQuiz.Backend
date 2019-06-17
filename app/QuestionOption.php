@@ -15,8 +15,7 @@ class QuestionOption extends Model
 {
     protected $fillable = [
         'text',
-        'answer',
-        'question_id'
+        'answer'
     ];
 
     protected $casts = [

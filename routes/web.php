@@ -1,17 +1,8 @@
 <?php
 
-Route::get('/', 'Auth\LoginController@showLoginForm');
+/** @var \Illuminate\Routing\Router $router */
 
+$router->get('/', 'Auth\LoginController@showLoginForm')->middleware('guest')->name('home');
+$router->resource('questions', 'QuestionsController', ['expect' => 'show'])->middleware('auth');
 
-Route::group(['middleware' => 'guest'], function() {
-    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-    Route::post('login', 'Auth\LoginController@login');
-});
-
-Route::group(['middleware' => 'auth'], function() {
-    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-    Route::resource('questions', 'QuestionsController');
-});
-
-
-
+Auth::routes();

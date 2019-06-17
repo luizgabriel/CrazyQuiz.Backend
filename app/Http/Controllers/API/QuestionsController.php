@@ -26,13 +26,13 @@ class QuestionsController extends Controller
 
     public function notifyRight(Question $question)
     {
-        $question->difficulty -= ($question->difficulty > 0) ? 2 : 0;
+        $question->difficulty -= 0.5;
         $question->save();
     }
 
     public function notifyWrong(Question $question)
     {
-        $question->difficulty += 10;
+        $question->difficulty += 0.2;
         $question->save();
     }
 
