@@ -4,5 +4,5 @@
 
 $router->get('questions/random', 'API\QuestionsController@random');
 $router->get('questions', 'API\QuestionsController@index');
-$router->get('questions/{questions}/right', 'API\QuestionsController@notifyRight');
-$router->get('questions/{questions}/wrong', 'API\QuestionsController@notifyWrong');
+$router->post('questions/{questions}/right', 'API\QuestionsController@notifyRight');
+$router->post('questions/{questions}/wrong', 'API\QuestionsController@notifyWrong');
