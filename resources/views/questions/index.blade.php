@@ -81,14 +81,17 @@
                                                 <td>{{ $question->id }}</td>
                                                 <td>{{ Str::limit($question->text) }}</td>
                                                 <td>{{ Str::limit(optional($question->answer)->text) }}</td>
-                                                <td data-toggle="tooltip" data-placement="right" title="{{ number_format($question->difficulty, 1) }}">
+                                                <td>
+                                                    <span data-toggle="tooltip" data-placement="right"
+                                                          title="{{ number_format($question->difficulty, 1) }}">
                                                     @if ($question->hard)
-                                                        Difícil
-                                                    @elseif ($question->easy)
-                                                        Fácil
-                                                    @else
-                                                        Normal
-                                                    @endif
+                                                            Difícil
+                                                        @elseif ($question->easy)
+                                                            Fácil
+                                                        @else
+                                                            Normal
+                                                        @endif
+                                                    </span>
                                                 </td>
                                                 <td width="250px">
                                                     <a href="{{ route('questions.edit', $question->id) }}"
