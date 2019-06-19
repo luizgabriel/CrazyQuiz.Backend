@@ -49,7 +49,7 @@ class QuestionsController extends Controller
             $lastRefresh = Carbon::createFromFormat('Y-m-d H:i:s', $lastRefresh);
 
         $questions = $questionnaire->getQuestions($lastRefresh);
-        return QuestionResource::collection($questions->toArray());
+        return QuestionResource::collection($questions);
     }
 
 }
