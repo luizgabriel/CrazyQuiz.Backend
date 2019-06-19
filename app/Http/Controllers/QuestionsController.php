@@ -11,7 +11,11 @@ class QuestionsController extends Controller
     public function index()
     {
         $questions = Question::paginate(15);
-        return view('questions.index', compact('questions'));
+        $easy = Question::easyDifficulty()->count();
+        $hard = Question::hardDifficulty()->count();
+        $normal = Question::normalDifficulty()->count();
+
+        return view('questions.index', compact('questions', 'easy', 'hard', 'normal'));
     }
 
     public function create()

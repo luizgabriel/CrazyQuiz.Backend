@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * CrazyQuiz\QuestionOption
  *
- * @property-read \CrazyQuiz\Question $question
- * @mixin \Eloquent
+ * @property int $id
+ * @property string $text
+ * @property boolean $answer
+ * @property-read Question $question
+ * @mixin Model
  */
 class QuestionOption extends Model
 {
